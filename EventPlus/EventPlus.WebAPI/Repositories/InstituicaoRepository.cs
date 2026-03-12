@@ -24,9 +24,9 @@ namespace EventPlus.WebAPI.Repositories
 
             if (TipoInstituicaoBuscada != null)
             {
-                TipoInstituicaoBuscada.NomeFantasia = instituicao.NomeFantasia;
-                TipoInstituicaoBuscada.Cnpj = instituicao.Cnpj;
-                TipoInstituicaoBuscada.Endereco = instituicao.Endereco;
+                TipoInstituicaoBuscada.Cnpj = String.IsNullOrWhiteSpace(instituicao.Cnpj)? TipoInstituicaoBuscada.Cnpj : instituicao.Cnpj;
+                TipoInstituicaoBuscada.NomeFantasia = String.IsNullOrWhiteSpace(instituicao.NomeFantasia)? TipoInstituicaoBuscada.NomeFantasia : instituicao.NomeFantasia;
+                TipoInstituicaoBuscada.Endereco = String.IsNullOrWhiteSpace(instituicao.Endereco) ? TipoInstituicaoBuscada.Endereco : instituicao.Endereco;
                 _context.SaveChanges();
             }
         }

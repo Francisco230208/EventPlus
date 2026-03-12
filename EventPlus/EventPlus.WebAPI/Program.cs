@@ -14,6 +14,8 @@ builder.Services.AddOpenApi();
 
 //Rgistrar as repositories para injeção de dependência
 builder.Services.AddScoped<ITipoEventoRepository, TipoEventoRepository>();
+builder.Services.AddScoped<ITipoInstituicao, InstituicaoRepository>();
+builder.Services.AddScoped<ITipoUsuario, TipoUsuarioRepository>();
 
 //adiciona o swagger
 builder.Services.AddEndpointsApiExplorer();

@@ -25,7 +25,7 @@ namespace EventPlus.WebAPI.Repositories
 
             if ( TipoUsuarioBuscado!= null)
             {
-                TipoUsuarioBuscado.Titulo = TipoUsuarioBuscado.Titulo;
+                TipoUsuarioBuscado.Titulo = tipoUsuario.Titulo;
                 //O SaveChanges decta a mudança no banco de dados  na propriedade "Titulo" automaticamente
                 _context.SaveChanges();
             }

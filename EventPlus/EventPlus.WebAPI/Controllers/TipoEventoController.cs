@@ -10,12 +10,17 @@ namespace EventPlus.WebAPI.Controllers;
 [ApiController]
 public class TipoEventoController : ControllerBase
 {
-    private ITipoEventoRepository _tipoEventoRepository;
+    private ITipoEventoRepository _tipoEventoRepository;//Atributo do tipo de evento repository para acessar os métodos do repositório
 
     public TipoEventoController(ITipoEventoRepository tipoEventoRepository)
     {
         _tipoEventoRepository = tipoEventoRepository;
     }
+
+
+
+
+
     /// <summary>
     /// EndPoint da API que afz chamada para o método de listar os tipos de evento
     /// </summary>
@@ -36,7 +41,7 @@ public class TipoEventoController : ControllerBase
     /// <summary>
     /// EndPoint da API que faz a chamada para o método de buscar um tipo de evento específico
     /// </summary>
-    /// <param name="id">Id um tipo de veento buscado</param>
+    /// <param name="id">Id um tipo de evento buscado</param>
     /// <returns>status code 200 tipo de evento buscado</returns>
     [HttpGet("{id}")]
     public IActionResult BuscarPorId(Guid id)
@@ -85,12 +90,18 @@ public class TipoEventoController : ControllerBase
     /// <returns>StatusCode 204 e o tipo de evento atualizado</returns>
 
     [HttpPut("{id}")]
-    public IActionResult Atualizar(Guid id, TipoEvento tipoEvento)
+    public IActionResult Atualizar(Guid id, TipoEventoDTO tipoEvento)
     {
         try
         {
-            _tipoEventoRepository.Atualizar(id, tipoEvento);
-            return StatusCode (204, tipoEvento);//204 NoContent
+
+            var tipoEventoAtualizado = new TipoEvento
+            {
+                Titulo = tipoEvento.Titulo!
+            };
+
+            _tipoEventoRepository.Atualizar(id, tipoEventoAtualizado);
+            return StatusCode (204, tipoEventoAtualizado);//204 NoContent
         }
         catch(Exception erro)
         {
