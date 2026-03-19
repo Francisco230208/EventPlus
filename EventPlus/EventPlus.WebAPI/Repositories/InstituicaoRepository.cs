@@ -14,10 +14,10 @@ namespace EventPlus.WebAPI.Repositories
             _context = context;
         }
         /// <summary>
-        /// 
+        /// metodo de atualizar uma instituicao
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="instituicao"></param>
+        /// <param name="id">busca o id de uma instituicao</param>
+        /// <param name="instituicao">nom da insituicao</param>
         public void Atualizar(Guid id, Instituicao instituicao)
         {
             var TipoInstituicaoBuscada = _context.Instituicaos.Find(id);
@@ -30,11 +30,22 @@ namespace EventPlus.WebAPI.Repositories
                 _context.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// Metodo de buscar uma instituicao especifica
+        /// </summary>
+        /// <param name="id">id da instituicao buscado</param>
+        /// <returns>retorna o id buscado</returns>
         public Instituicao BuscarPorId(Guid id)
         {
             return _context.Instituicaos.Find(id)!;
         }
 
+
+        /// <summary>
+        /// Metodo de cadastrar uma nova instituicao
+        /// </summary>
+        /// <param name="instituicao">Nome d ainstituicao </param>
         public void Cadastrar(Instituicao instituicao)
         {
 
@@ -42,6 +53,10 @@ namespace EventPlus.WebAPI.Repositories
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Metodo de deletar uma instituicao
+        /// </summary>
+        /// <param name="id">id deletado</param>
         public void Deletar(Guid id)
         {
             var InstituicaoBuscada = _context.Instituicaos.Find(id);
@@ -52,6 +67,10 @@ namespace EventPlus.WebAPI.Repositories
             }
         }
 
+        /// <summary>
+        /// metodo de listar todas as instituicoes cadastradas
+        /// </summary>
+        /// <returns></returns>
         public List<Instituicao> Listar()
         {
             return _context.Instituicaos

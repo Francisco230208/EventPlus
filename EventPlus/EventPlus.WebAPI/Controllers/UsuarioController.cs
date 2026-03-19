@@ -18,7 +18,7 @@ public class UsuarioController : ControllerBase
     }
 
 
-
+ 
     /// <summary>
     /// EndPoint da API que faz a chamada para o método de buscar um usuário específico, buscando pelo id do usuário
     /// </summary>
@@ -63,6 +63,22 @@ public class UsuarioController : ControllerBase
         {
             _usuarioRepository.Cadastrar(usuario);
             return StatusCode(201, usuario);       
+        }
+        catch (Exception erro)
+        {
+            return BadRequest(erro.Message);
+        }
+    }
+    /// <summary>
+    /// EndPOint da API que lista todos os usuarios
+    /// </summary>
+    /// <returns>retorna status code 204 e lista os usuarios</returns>
+    [HttpGet]
+    public IActionResult Listar()
+    {
+        try
+        {
+            return Ok(_usuarioRepository.Listar());
         }
         catch (Exception erro)
         {

@@ -65,8 +65,12 @@ public class UsuarioRepository: IUsuarioRepository
     /// <param name="usuario">Usuário a ser cadastrado</param>
     public void Cadastrar(Usuario usuario)
     {
-       usuario.Senha = Criptografia.GerarHash(usuario.Senha);
+        usuario.Senha = Criptografia.GerarHash(usuario.Senha);
         _context.Usuarios.Add(usuario);
         _context.SaveChanges();
+    }
+    public List<Usuario> Listar()
+    {
+        return _context.Usuarios.ToList();
     }
 }

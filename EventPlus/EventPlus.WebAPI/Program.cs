@@ -19,6 +19,7 @@ builder.Services.AddScoped<ITipoInstituicao, InstituicaoRepository>();
 builder.Services.AddScoped<ITipoUsuario, TipoUsuarioRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IEventoRepository, EventoRepository>();
+builder.Services.AddScoped<IPresençaRepository, PresencaRepository>();
 
 
 //Adiciona o serviço de autenticação JWT Bearer(forma de autenticação)

@@ -39,22 +39,47 @@ public IActionResult ListarPorId(Guid IdUsuario)
 
 
     /// <summary>
-    /// EndPoint da API que faz a chamada para o método de listar os próximos eventos
+    /// Metodo para listar os eventos, sem filtro, para o usuário escolher quais eventos ele deseja participar
     /// </summary>
-    /// <returns>retorna statusCode 200 e a lista dos próximos eventos</returns>
-    [HttpGet("ListarProximos")]
-    public IActionResult BuscarProximosEventos()
+    /// <returns>retorna statuscode 204 e a lista de eventps</returns>
+    [HttpGet]
+    public IActionResult Listar()
     {
         try
         {
-            return Ok(_eventoRepository.ProximosEventos());
+            return Ok(_eventoRepository.Listar());
         }
         catch (Exception erro)
         {
-
             return BadRequest(erro.Message);
         }
     }
+
+
+
+    /// <summary>
+    /// metodo para buscar eventos especificos
+    /// </summary>
+    /// <param name="id">busca id especifico</param>
+    /// <returns>retorna evento especifico</returns>
+    [HttpGet("BuscarProximosEventosPorId/{id}")]
+    public IActionResult BuscarPorID(Guid id)
+    {
+        try
+        {
+            var evento = _eventoRepository.BuscarPorId(id);
+            if (evento == null)
+            {
+                return StatusCode(404);
+            }
+            return Ok(evento);
+        }
+        catch (Exception erro)
+        {
+            return BadRequest(erro.Message);
+        }
+    }
+
 
 
     /// <summary>
@@ -77,7 +102,7 @@ public IActionResult ListarPorId(Guid IdUsuario)
                 IdTipoEvento = eventoDTO.IdTipoEvento
 
             };
-           _eventoRepository.Cadastrar(evento);
+            _eventoRepository.Cadastrar(evento);
             return Ok("Evento cadastrado com sucesso!");
 
         }
@@ -87,23 +112,6 @@ public IActionResult ListarPorId(Guid IdUsuario)
         }
     }
 
-    [HttpGet("BuscarProximosEventosPorId/{id}")]
-    public IActionResult BuscarPorID(Guid id)
-    {
-        try
-        {
-            var evento = _eventoRepository.BuscarPorId(id);
-            if (evento == null)
-            {
-                return StatusCode(404);
-            }
-            return Ok(evento);
-        }
-        catch (Exception erro)
-        {
-            return BadRequest(erro.Message);
-        }
-    }
 
     /// <summary>
     /// 

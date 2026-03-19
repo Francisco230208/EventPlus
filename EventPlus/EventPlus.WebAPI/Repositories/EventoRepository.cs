@@ -17,6 +17,11 @@ public class EventoRepository: IEventoRepository
         _context = context; 
     }
 
+    /// <summary>
+    /// Método para atualizar um evento, onde é possível alterar o nome, data, descrição, tipo e instituição do evento
+    /// </summary>
+    /// <param name="id">id do evento</param>
+    /// <param name="evento"></param>
     public void Atualizar(Guid id,Evento evento)
     {
         var eventoBuscado = _context.Eventos.Find(id);
@@ -31,18 +36,31 @@ public class EventoRepository: IEventoRepository
         }
     }
 
+    /// <summary>
+    /// Metodo de buscar um id especifico
+    /// </summary>
+    /// <param name="id">id do evento buscado</param>
+    /// <returns>retorna o id do evento buscado</returns>
     public Evento BuscarPorId(Guid id)
     {
         return _context.Eventos.Find(id);
     }
 
 
+    /// <summary>
+    /// Metodo de cadastrar um novo evento
+    /// </summary>
+    /// <param name="evento"></param>
     public void Cadastrar(Evento evento)
     {
         _context.Eventos.Add(evento);
         _context.SaveChanges();
     }
 
+    /// <summary>
+    /// Metodo de deletar um evento
+    /// </summary>
+    /// <param name="id">id a ser deletado</param>
     public void Deletar(Guid id)
     {
         var eventoBuscado = _context.Eventos.Find(id);
@@ -53,6 +71,10 @@ public class EventoRepository: IEventoRepository
         }
     }
 
+    /// <summary>
+    /// Metodo para listar os eventos cadastrados
+    /// </summary>
+    /// <returns>retorna status code 204 e a lista de eventos</returns>
     public List<Evento> Listar()
     {
 

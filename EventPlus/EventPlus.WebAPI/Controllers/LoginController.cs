@@ -36,9 +36,10 @@ public class LoginController : ControllerBase
                 //1. Definir as informações (claims) que serão fornecidas no token - payload
                 var claims = new[]
                 {
-                    new Claim (JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
-                    new Claim("Titulo", usuarioBuscado.IdTipoUsuarioNavigation?.Titulo ?? "SemTipo"),
+                    new Claim(JwtRegisteredClaimNames.Name, usuarioBuscado.Nome!),
+                    new Claim (JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
+                    new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuarioNavigation!.Titulo!)
                 };
 
             //2. Definir a chave de acesso ao token (secret)
