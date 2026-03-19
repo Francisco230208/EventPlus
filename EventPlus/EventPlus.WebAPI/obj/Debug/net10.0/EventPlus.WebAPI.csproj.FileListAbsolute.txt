@@ -322,3 +322,4 @@ C:\Users\44788197855\Desktop\EventPlus\EventPlus\EventPlus.WebAPI\obj\Debug\net1
 C:\Users\44788197855\Desktop\EventPlus\EventPlus\EventPlus.WebAPI\obj\Debug\net10.0\EventPlu.DAF08F38.Up2Date
 C:\Users\44788197855\Desktop\EventPlus\EventPlus\EventPlus.WebAPI\obj\Debug\net10.0\EventPlus.WebAPI.genruntimeconfig.cache
 C:\Users\44788197855\Desktop\EventPlus\EventPlus\EventPlus.WebAPI\obj\Debug\net10.0\ref\EventPlus.WebAPI.dll
+C:\Users\44788197855\Desktop\EventPlus\EventPlus\EventPlus.WebAPI\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
