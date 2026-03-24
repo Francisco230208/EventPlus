@@ -9,4 +9,6 @@ public interface IComentarioEventoRepository
     List<ComentarioEvento> Listar(Guid IdEvento);
     ComentarioEvento BuscarPorIdUsuario(Guid idUsuario, Guid IdEvento);
     List<ComentarioEvento> ListarSomenteExibe(Guid IdEvento);
+    object? ComentarioUsuarioEvento(Guid idUsuario, Guid idEvento);
+    object? ListarComentariosEvento(Guid idEvento);
 }

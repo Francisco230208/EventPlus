@@ -28,7 +28,7 @@ public class ComentarioEventoRepository: IComentarioEventoRepository
             .FirstOrDefault(c => c.IdUsuario == idUsuario && c.IdEvento == IdEvento)!;
 
     }
-
+     
 
     /// <summary>
     /// Metodo para cadastrar um novo tipo de evento
@@ -38,6 +38,11 @@ public class ComentarioEventoRepository: IComentarioEventoRepository
     {
         _context.ComentarioEventos.Add(comentarioEvento);
         _context.SaveChanges();
+    }
+
+    public object? ComentarioUsuarioEvento(Guid idUsuario, Guid idEvento)
+    {
+        throw new NotImplementedException();
     }
 
 
@@ -64,6 +69,11 @@ public class ComentarioEventoRepository: IComentarioEventoRepository
     public List<ComentarioEvento> Listar(Guid IdEvento)
     {
        return _context.ComentarioEventos.OrderBy(comentarioEventoBuscado => comentarioEventoBuscado.Descricao).ToList();
+    }
+
+    public object? ListarComentariosEvento(Guid idEvento)
+    {
+        throw new NotImplementedException();
     }
 
     /// <summary>
